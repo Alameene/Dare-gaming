@@ -48,6 +48,26 @@ document.getElementById("askButton").addEventListener("click", function() {
         askButton.textContent = "Submit Answer";
         askButton.addEventListener("click", function() {
             const answer = answerInput.value.trim();
+            // JavaScript
+
+// Establish WebSocket connection
+const socket = new WebSocket('ws://your-websocket-server-url');
+
+// Event handler for receiving messages from the server
+socket.onmessage = function(event) {
+    const data = JSON.parse(event.data);
+    // Update game interface based on received data
+};
+
+// Function to send messages to the server
+function sendMessage(message) {
+    socket.send(JSON.stringify(message));
+}
+
+// Function to handle player's turn
+function nextTurn() {
+    sendMessage({ type: 'next_turn' });
+}
             if (!answer) {
                 alert("Please provide an answer.");
                 return;
